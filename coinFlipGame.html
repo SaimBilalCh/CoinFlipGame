@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Coin Flip Game</title>
+        <style>
+            html{
+                background-color: black;
+                text-align: center;
+            }
+            h1{
+                margin-top: 150px;
+                color: white;
+                font-size: 24px;
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                text-align: center;
+            }
+            .btns{
+                margin-top: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                column-gap: 50px;
+            }
+            button{
+                color: white;
+                background: linear-gradient(120deg, black, rgb(63, 63, 63));
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 20px;
+                border-radius: 50%;
+                border: solid 3px white;
+                width: 100px;
+                height: 100px;
+                cursor: pointer;
+                transition: 0.2s;
+                margin-right: 10px;
+            }
+            button:hover{
+                background: linear-gradient(120deg, rgb(37, 37, 37), black);
+                box-shadow: 0px 0px 10px white;
+            }
+            .reset{
+                border: solid 2px white;
+                border-radius: 30px;
+                margin-top: 20px;
+                width: 100px;
+                height: 50px;
+                background: transparent;
+            }
+            .para{
+                margin-top: 30px;
+                display: flex;
+                justify-content: center;
+                column-gap: 20px;
+            }
+            p{
+                color: white;
+                font-size: 18px;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                margin: 0;
+            }
+            #message{
+                color:rgb(226, 111, 111);
+                margin-top: 40px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Coin Flip Game</h1>
+        <div class="btns">
+            <button onclick="
+            let randomNumber = Math.random(), result='';
+            let guess = 'heads';
+            if(randomNumber >= 0 && randomNumber <= 1/2){
+                result = 'heads';
+            }
+            else {
+                result = 'tails';
+            }
+
+            if (guess === result){
+                win += 1;
+                document.getElementById('message').textContent = `You win!`;
+            } else {
+                loss += 1;
+                document.getElementById('message').textContent = `You Lose!`;
+            }
+            document.getElementById('winCount').textContent = `Wins: ${win}`;
+            document.getElementById('lossCount').textContent = `Losses: ${loss}`;
+            ">
+                Heads
+            </button>
+
+            <button onclick="
+            randomNumber = Math.random(), result='';
+            guess = 'tails';
+            if(randomNumber >= 1/2 && randomNumber <= 1){
+                result = 'tails';
+            }
+            else {
+                result = 'heads';
+            }
+
+            if (guess === result){
+                win += 1;
+                document.getElementById('message').textContent = `You Win!`;
+            } else {
+                loss += 1;
+                document.getElementById('message').textContent = `You Lose!`;
+            }
+            document.getElementById('winCount').textContent = `Wins: ${win}`;
+            document.getElementById('lossCount').textContent = `Losses: ${loss}`;
+            ">
+                Tails
+            </button>
+        </div>
+            <p id="message"></p>
+        <div class="para">
+            <p id="winCount"></p>
+            <p id="lossCount"></p>
+        </div>
+        <button class="reset" onclick="
+            win = 0; loss = 0;
+            document.getElementById('winCount').textContent = ``;
+            document.getElementById('lossCount').textContent = ``;
+            document.getElementById('message').textContent = '';
+        ">
+            Reset
+        </button>
+        
+        <script>
+            let win = 0, loss = 0;
+        </script>
+    </body>
+</html>
